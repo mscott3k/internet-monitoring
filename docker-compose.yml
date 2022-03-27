@@ -12,7 +12,7 @@ services:
   prometheus:
     image: prom/prometheus:v2.0.0
     volumes:
-      - ./prometheus/:/etc/prometheus/
+      - /home/mscott/git/internet-monitoring/prometheus:/etc/prometheus/
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -31,13 +31,13 @@ services:
     image: grafana/grafana
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./grafana/provisioning/:/etc/grafana/provisioning/
+      - /home/mscott/git/internet-monitoring/grafana/provisioning/:/etc/grafana/provisioning/
     depends_on:
       - prometheus
     ports:
       - 3030:3000
     env_file:
-      - ./grafana/config.monitoring
+      - /home/mscott/git/internet-monitoring/grafana/config.monitoring
     networks:
       - back-tier
       - front-tier
@@ -51,7 +51,7 @@ services:
       - 9115:9115
     image: prom/blackbox-exporter
     volumes:
-      - ./blackbox/config:/config
+      - /home/mscott/git/internet-monitoring/blackbox/config:/config
     command:
       - '--config.file=/config/blackbox.yml'
     networks:
