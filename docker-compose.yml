@@ -3,8 +3,6 @@ version: "3.1"
 volumes:
     prometheus_data: {}
     grafana_data: {}
-    install: {}
-    blackbox_exporter: {}
 
 networks:
   front-tier:
@@ -14,7 +12,7 @@ services:
   prometheus:
     image: prom/prometheus:v2.0.0
     volumes:
-      - install/prometheus:/etc/prometheus/
+      - ./prometheus:/etc/prometheus/
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -33,7 +31,7 @@ services:
     image: grafana/grafana
     volumes:
       - grafana_data:/var/lib/grafana
-      - install/grafana/provisioning/:/etc/grafana/provisioning/
+      - .grafana/provisioning/:/etc/grafana/provisioning/
     depends_on:
       - prometheus
     ports:
@@ -53,7 +51,7 @@ services:
       - 9115:9115
     image: prom/blackbox-exporter
     volumes:
-      - blackbox_exporter:/config
+      - .blackbox/config:/config
     command:
       - '--config.file=/config/blackbox.yml'
     networks:
