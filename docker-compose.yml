@@ -3,6 +3,7 @@ version: "3.1"
 volumes:
     prometheus_data: {}
     grafana_data: {}
+    blackbox_exporter: {}
 
 networks:
   front-tier:
@@ -12,10 +13,10 @@ services:
   prometheus:
     image: prom/prometheus:v2.0.0
     volumes:
-      - ./prometheus/:/etc/prometheus/
+      - ./prometheus/:/prometheus/config
       - prometheus_data:/prometheus
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--config.file=/prometheus/config/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
