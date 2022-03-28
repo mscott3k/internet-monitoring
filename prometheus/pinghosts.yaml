@@ -3,8 +3,6 @@
     - http://google.com;google.com;external;internetbox
     - http://github.com;github.com;external;internetbox
     - http://discord.com;discord;external;internetbox
-    #- https://blackdata.xam.dk:5001;blackdata.xam.dk;external;internetbox
-    - http://192.168.1.1;internetbox;local;internetbox
-    #- http://192.168.1.42;blackdata;local;orbirouter-attic
+    - http://192.168.1.1;router;local;internetbox
     - http://192.168.1.101;pihole;local;internetbox
 
