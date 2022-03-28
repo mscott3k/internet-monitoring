@@ -1,5 +1,6 @@
 - targets:  # url;humanname;routing;switch
     - http://1.1.1.1;cloudflare;external;internetbox
+    - http://teams.microsoft.com;teams.microsoft.com;external;internetbox
     - http://google.com;google.com;external;internetbox
     - http://github.com;github.com;external;internetbox
     - http://discord.com;discord;external;internetbox
