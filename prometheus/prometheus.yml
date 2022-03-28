@@ -69,5 +69,4 @@ scrape_configs:
   - job_name: 'nodeexp'
     static_configs:
     - targets: ['nodeexp:9100']
-
     
